@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import apiClient from "@/lib/api/client";
 
@@ -18,7 +18,7 @@ interface LeaderboardEntry {
   average_score: number;
 }
 
-export default function LeaderboardPage() {
+function LeaderboardContent() {
   const searchParams = useSearchParams();
   const classId = searchParams.get("class_id");
 
@@ -240,3 +240,19 @@ export default function LeaderboardPage() {
   );
 }
 
+export default function LeaderboardPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gradient-to-br from-violet-600 via-purple-600 to-pink-500 flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-20 h-20 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto"></div>
+            <p className="text-white mt-4 text-xl">Loading leaderboard...</p>
+          </div>
+        </div>
+      }
+    >
+      <LeaderboardContent />
+    </Suspense>
+  );
+}
