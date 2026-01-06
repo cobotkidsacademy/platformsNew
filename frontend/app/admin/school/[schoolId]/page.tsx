@@ -333,7 +333,10 @@ export default function SchoolDetailPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">Level</label>
                 <select
                   value={editingClass.level}
-                  onChange={(e) => setEditingClass({ ...editingClass, level: e.target.value })}
+                  onChange={(e) => {
+                    const level = e.target.value as 'level1' | 'level2' | 'level3' | 'advanced';
+                    setEditingClass({ ...editingClass, level });
+                  }}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg"
                 >
                   {Object.entries(LEVEL_LABELS).map(([key, label]) => (
