@@ -456,7 +456,7 @@ export default function TutorClassPerformanceReportPage() {
       'BE': { display: "BE", color: "text-red-600", bgColor: "bg-red-50" },
     };
 
-    return categoryMap[perf.category] || { display: "X", color: "text-red-600", bgColor: "bg-red-50" };
+    return categoryMap[perf.category as string] || { display: "X", color: "text-red-600", bgColor: "bg-red-50" };
   };
 
   const filteredClasses = selectedSchoolId 
