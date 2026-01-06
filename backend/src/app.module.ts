@@ -17,9 +17,11 @@ import { StudentCoursesModule } from './student-courses/student-courses.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: ['.env', '.env.local'], // Try multiple env file paths
-      ignoreEnvFile: false, // Still try to load .env if it exists
-      expandVariables: true, // Allow variable expansion in .env
+      // In production (Railway/Docker), use environment variables only
+      // In development, try to load from .env files
+      envFilePath: process.env.NODE_ENV === 'production' ? undefined : ['.env', '.env.local'],
+      ignoreEnvFile: process.env.NODE_ENV === 'production',
+      expandVariables: true,
     }),
     DatabaseModule,
     AuthModule,

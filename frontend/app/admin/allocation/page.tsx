@@ -788,7 +788,7 @@ export default function AllocationPage() {
                           onClick={() => openAssignTutorModal(classItem)}
                           className="text-xs text-violet-500 hover:text-violet-600"
                           disabled={
-                            allocation?.lead_tutor && allocation?.assistant_tutor
+                            !!(allocation?.lead_tutor && allocation?.assistant_tutor)
                           }
                         >
                           Assign
@@ -1159,7 +1159,7 @@ export default function AllocationPage() {
                     openAssignTutorModal(selectedClass.class);
                   }}
                   className="flex-1 px-4 py-2 bg-violet-500/10 text-violet-500 rounded-lg hover:bg-violet-500/20 transition-colors"
-                  disabled={selectedClass.lead_tutor && selectedClass.assistant_tutor}
+                  disabled={!!(selectedClass.lead_tutor && selectedClass.assistant_tutor)}
                 >
                   Assign Tutor
                 </button>
