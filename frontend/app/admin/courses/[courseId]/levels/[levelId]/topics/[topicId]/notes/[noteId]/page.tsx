@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import apiClient from "@/lib/api/client";
-import { Note, NoteElement } from "../../../../../../types";
+import { Note, NoteElement } from "../../../../../../../types";
 
 interface DragState {
   isDragging: boolean;
