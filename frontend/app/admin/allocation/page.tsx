@@ -168,6 +168,20 @@ export default function AllocationPage() {
     }
   };
 
+  const fetchTutorDetails = async (tutorId: string) => {
+    try {
+      setLoading(true);
+      const response = await apiClient.get(`/allocations/tutor/${tutorId}`);
+      setTutorDetails(response.data);
+    } catch (err: any) {
+      console.error("Error fetching tutor details:", err);
+      setError(err.response?.data?.message || "Failed to load tutor details");
+      setTutorDetails(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleAssignCourseEditor = async (courseId: string) => {
     if (!editorLink.trim()) {
       alert("Please enter an editor link");
