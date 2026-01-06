@@ -335,10 +335,12 @@ export default function AllocationPage() {
   };
 
   const openAssignTutorModal = async (classItem: Class | AllocationDetail['class']) => {
-    const classId = 'id' in classItem ? classItem.id : classItem.id;
-    const className = 'name' in classItem ? classItem.name : classItem.name;
-    const classLevel = 'level' in classItem ? classItem.level : classItem.level;
-    const studentCount = 'student_count' in classItem ? (classItem.student_count || 0) : 0;
+    // Both Class and AllocationDetail['class'] have id, name, and level
+    const classId = classItem.id;
+    const className = classItem.name;
+    const classLevel = classItem.level;
+    // student_count only exists on Class, not on AllocationDetail['class']
+    const studentCount = ('student_count' in classItem) ? (classItem as Class).student_count || 0 : 0;
 
     try {
       const response = await apiClient.get(`/allocations/class/${classId}`);
@@ -367,10 +369,12 @@ export default function AllocationPage() {
   };
 
   const openScheduleModal = async (classItem: Class | AllocationDetail['class']) => {
-    const classId = 'id' in classItem ? classItem.id : classItem.id;
-    const className = 'name' in classItem ? classItem.name : classItem.name;
-    const classLevel = 'level' in classItem ? classItem.level : classItem.level;
-    const studentCount = 'student_count' in classItem ? (classItem.student_count || 0) : 0;
+    // Both Class and AllocationDetail['class'] have id, name, and level
+    const classId = classItem.id;
+    const className = classItem.name;
+    const classLevel = classItem.level;
+    // student_count only exists on Class, not on AllocationDetail['class']
+    const studentCount = ('student_count' in classItem) ? (classItem as Class).student_count || 0 : 0;
 
     try {
       const response = await apiClient.get(`/allocations/class/${classId}`);
@@ -408,10 +412,12 @@ export default function AllocationPage() {
   };
 
   const openDetailModal = async (classItem: Class | AllocationDetail['class']) => {
-    const classId = 'id' in classItem ? classItem.id : classItem.id;
-    const className = 'name' in classItem ? classItem.name : classItem.name;
-    const classLevel = 'level' in classItem ? classItem.level : classItem.level;
-    const studentCount = 'student_count' in classItem ? (classItem.student_count || 0) : 0;
+    // Both Class and AllocationDetail['class'] have id, name, and level
+    const classId = classItem.id;
+    const className = classItem.name;
+    const classLevel = classItem.level;
+    // student_count only exists on Class, not on AllocationDetail['class']
+    const studentCount = ('student_count' in classItem) ? (classItem as Class).student_count || 0 : 0;
 
     try {
       const response = await apiClient.get(`/allocations/class/${classId}`);
@@ -437,10 +443,12 @@ export default function AllocationPage() {
   };
 
   const openCourseLevelModal = async (classItem: Class | AllocationDetail['class']) => {
-    const classId = 'id' in classItem ? classItem.id : classItem.id;
-    const className = 'name' in classItem ? classItem.name : classItem.name;
-    const classLevel = 'level' in classItem ? classItem.level : classItem.level;
-    const studentCount = 'student_count' in classItem ? (classItem.student_count || 0) : 0;
+    // Both Class and AllocationDetail['class'] have id, name, and level
+    const classId = classItem.id;
+    const className = classItem.name;
+    const classLevel = classItem.level;
+    // student_count only exists on Class, not on AllocationDetail['class']
+    const studentCount = ('student_count' in classItem) ? (classItem as Class).student_count || 0 : 0;
 
     try {
       const response = await apiClient.get(`/allocations/class/${classId}`);
