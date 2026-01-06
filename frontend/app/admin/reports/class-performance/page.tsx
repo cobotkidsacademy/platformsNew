@@ -4,12 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import PageHeader from "@/components/admin/PageHeader";
 import apiClient from "@/lib/api/client";
-
-interface School {
-  id: string;
-  name: string;
-  code: string;
-}
+import { School } from "../../school/types";
 
 interface Class {
   id: string;
